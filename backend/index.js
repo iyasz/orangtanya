@@ -5,6 +5,7 @@ import cors from "cors"
 import authRouter from "./router/authRouter.js"
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
+import { errorHandler, notFound } from "./middleware/errorHandler.js";
 
 dotenv.config();
 
@@ -30,6 +31,8 @@ app.get("/", (req, res) => {
 // parent router 
 app.use('/api/v1/auth', authRouter);
 
+app.use(notFound)
+app.use(errorHandler)
 
 
  

@@ -10,12 +10,12 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "Username tidak boleh kosong!"],
-        unique: [true, "Username sudah terdaftar!"]
+        unique: true
     },
     email: {
         type: String,
         required: [true, "Email tidak boleh kosong!"],
-        unique: [true, "Email sudah terdaftar!"],
+        unique: true,
         validate: {
             validator: validator.isEmail,
             message: "Harus berupa email!"
@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
         minLength: [6, "Password harus lebih dari 5 Huruf!"]
     }
 })
+
+userSchema.methods.comparePassword = async function(reqPassword){
+    return await bcrypt.compare(reqPassword, this.password)
+}
 
 userSchema.pre("save", async function(){
     const salt = await bcrypt.genSalt(10)
