@@ -3,9 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-    <!-- <RouterView /> -->
 
-    <div class="container mx-auto px-8 mt-10">
+    <div class="container mx-auto px-8 mt-20">
 
         <div class="bg-white rounded-[22px] h-[500px]">
             <div class="wrapper">

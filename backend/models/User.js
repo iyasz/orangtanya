@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password tidak boleh kosong!"],
         minLength: [6, "Password harus lebih dari 5 Huruf!"]
+    },
+    role: {
+        type: String,
+        enum: [1, 2],
+        default: 2
     }
 })
 
