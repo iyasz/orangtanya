@@ -64,10 +64,28 @@ export const loginUser = asyncHandler (async (req, res) => {
 })
 
 export const logoutUser = (req, res) => {
-    res.send("logout berhasil")
+    res.cookie('jwt', '', {
+        expire: new Date(0),
+        httpOnly: true,
+        security: false
+    })
+
+    res.status(200).json({
+        message: "Anda berhasil logout!"
+    })
 }
 
-export const getUser = (req, res) => {
-    res.send("get user berhasil")
+export const getUser = async (req, res) => {
+    const user = await User.findById(req.user.id).select({password: 0})
+
+    if(user){
+        return res.status(200).json({
+            user
+        })
+    }
+
+    return res.status(400).json({
+        message: 'User tidak valid!'
+    })
 }
 

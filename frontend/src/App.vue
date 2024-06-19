@@ -45,7 +45,7 @@ const route = useRoute();
 watch(
   () => route.path,
   (newPath) => {
-    showNavbar.value = newPath !== '/auth/register';
+    showNavbar.value = newPath !== '/auth/login';
   },
   { immediate: true }
 );
