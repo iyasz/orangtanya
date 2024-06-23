@@ -26,7 +26,7 @@
                         </svg>
                     </div>
                 </div>
-                
+
                 <div ref="notificationMenu" :class="showNotificationNav ? 'bg-[#f5f6fb]' : ''" class="relative p-1 rounded-full" 
                 @mouseenter="showNotificationNav = true" @blur="showNotificationNav = false">
                     <div class="cursor-pointer">  
@@ -46,31 +46,7 @@
                     <img src="https://www.hoyolab.com/_nuxt/img/default_avatar.25aeebf.png" alt="avatar" width="35px">
                 </div>
             </div>
-            
-                <!-- <div class="navbar-end block md:hidden">
-                    <div class="dropdown ">
-                        <div id="dropdownToggle" role="button" class="m-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
-                        </div>
-                        <ul id="dropdownMenu" class="dropdown-content hidden absolute right-[30px] top-[70px] z-[3] font-[#000] text-sm border-[#676767] border-[1px]">
-                            <li class=" bg-[#111827] hover:bg-slate-700 cursor-pointer"><a class="px-5 py-2 block w-full" href="#home">Homepage</a></li>
-                            <li class=" bg-[#111827] hover:bg-slate-700 cursor-pointer"><a class="px-5 py-2 block w-full" href="#about">About</a></li>
-                            <li class=" bg-[#111827] hover:bg-slate-700 cursor-pointer"><a class="px-5 py-2 block w-full" href="#skills">Skills</a></li>
-                            <li class=" bg-[#111827] hover:bg-slate-700 cursor-pointer"><a class="px-5 py-2 block w-full" href="#projects">Projects</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="navbar-end hidden md:block">
-                    <div class="w-full flex justify-end">
-                        <div class="flex space-x-7 text-sm font-[#000]">
-                            <a href="#home">Homepage</a>
-                            <a href="#about">About</a>
-                            <a href="#skills">Skills</a>
-                            <a href="#projects">Projects</a>
-                        </div>
-                    </div>
-                </div> -->
+         
 
         </div>
     </nav>
@@ -79,7 +55,7 @@
 
 <script >
 import { RouterLink } from 'vue-router';
-import NotificationNav from '@/components/layouts/client/notification.vue'
+import NotificationNav from './notification.vue'
 import { onMounted, onBeforeUnmount } from 'vue';
 
 export default {

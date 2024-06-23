@@ -2,7 +2,7 @@
 
 <template>
 
-    <Navbar v-if="showNavbar" />
+    <Navbar />
 
     
     <RouterView />
@@ -17,7 +17,7 @@ import './assets/style.css'
 import axios from 'axios';
 import { RouterView, useRoute } from 'vue-router'
 import { ref, onMounted, computed, watch } from 'vue';
-import Navbar from './components/layouts/main.vue'
+import Navbar from './components/layouts/client/dev.main.vue'
 
 const message = ref(null);
 const showNavbar = ref(true);

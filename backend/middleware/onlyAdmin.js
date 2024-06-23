@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";  
 
-export const onlyAdmin = (...roles) => {
+const onlyAdmin = (...roles) => {
     return (req, res, next) => {
         if(!roles.includes(req.user.role)){
             return next(res.status(403).json({
@@ -12,3 +12,5 @@ export const onlyAdmin = (...roles) => {
         next()
     }
 } 
+
+export default onlyAdmin;
