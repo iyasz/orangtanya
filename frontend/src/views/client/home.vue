@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
 
-    <div class="container mx-auto px-8 mt-20">
+    <div class="px-14 mt-24">
 
         <div class="bg-white rounded-[22px] h-[500px]">
             <div class="wrapper">

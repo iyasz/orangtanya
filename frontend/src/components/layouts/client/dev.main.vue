@@ -41,18 +41,21 @@
                 </div>
 
                 <div class="h-[18px] w-[1px] bg-slate-300"></div>
-                <div class="cursor-pointer">
+                
+                <button @click="VisibleLoginDialog = true" class="cursor-pointer">
                     <Avatar image="https://www.hoyolab.com/_nuxt/img/default_avatar.25aeebf.png" shape="circle" />
-                </div>
+                </button>
+
+                <LoginDialog v-model:visible="VisibleLoginDialog" />
             </div>
 
-            <button class="lg:hidden block ms-auto" @click="visible = true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+            <button class="lg:hidden block ms-auto" @click="VisibleSidebar = true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none" viewBox="0 0 24 24" stroke="#a3a3a3"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
             </button>
         </div>
       </div>
   
-        <Sidebar v-model:visible="visible">
+        <!-- <Sidebar v-model:visible="VisibleSidebar">
             <template #container="{ closeCallback }">
                 <div class="flex flex-column h-full">
                     <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
@@ -61,7 +64,7 @@
                         </span>
                         <span>
                             <Button type="button" @click="closeCallback" class="h-2rem w-2rem">
-                                <i class="pi pi-bars text-2xl"></i>
+                                <i class="pi pi-times text-xl"></i>
                             </Button>
                         </span>
                     </div>
@@ -227,7 +230,7 @@
                     </div>
                 </div>
             </template>
-        </Sidebar>
+        </Sidebar> -->
 
     </div>
   </template>
@@ -235,10 +238,12 @@
   <script setup>
     import { ref, onMounted, onBeforeUnmount } from 'vue';
     import NotificationNav from './notification.vue';
+    import LoginDialog from './login.vue';
 
     const showNotificationNav = ref(false);
     const notificationMenu = ref(null);
-    const visible = ref(false);
+    const VisibleSidebar = ref(false);
+    const VisibleLoginDialog = ref(false);
 
     const handleClickOutside = (event) => {
     if (notificationMenu.value && !notificationMenu.value.contains(event.target)) {
@@ -247,11 +252,11 @@
     };
 
     onMounted(() => {
-    document.addEventListener('click', handleClickOutside);
+        document.addEventListener('click', handleClickOutside);
     });
 
     onBeforeUnmount(() => {
-    document.removeEventListener('click', handleClickOutside);
+        document.removeEventListener('click', handleClickOutside);
     });
 
   </script>
