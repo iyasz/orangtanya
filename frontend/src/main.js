@@ -14,7 +14,8 @@ import Avatar from 'primevue/avatar';
 import Ripple from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
 import Dialog from 'primevue/dialog';
-import InputText from 'primevue/inputtext';
+import InputText from 'primevue/inputtext';Menu
+import Menu from 'primevue/menu';
 
 
 const app = createApp(App)
@@ -30,6 +31,7 @@ app.component('Button', Button);
 app.component('Avatar', Avatar);
 app.component('Dialog', Dialog);
 app.component('InputText', InputText);
+app.component('Menu', Menu);
 
 
 
