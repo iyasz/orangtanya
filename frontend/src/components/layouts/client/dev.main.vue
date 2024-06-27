@@ -239,11 +239,20 @@
     import { ref, onMounted, onBeforeUnmount } from 'vue';
     import NotificationNav from './notification.vue';
     import LoginDialog from './login.vue';
+    import { storeToRefs } from 'pinia';
+    import { useAuthStore } from '@/stores/authStores'
+
+    const authStores = useAuthStore();
+
+    // Stste Pinia js 
+    const { VisibleLoginDialog } = storeToRefs(authStores)
+
 
     const showNotificationNav = ref(false);
     const notificationMenu = ref(null);
     const VisibleSidebar = ref(false);
-    const VisibleLoginDialog = ref(false);
+
+
 
     const handleClickOutside = (event) => {
     if (notificationMenu.value && !notificationMenu.value.contains(event.target)) {

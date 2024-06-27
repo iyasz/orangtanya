@@ -44,7 +44,7 @@ export const registerUser = asyncHandler (async (req, res) => {
 
 export const loginUser = asyncHandler (async (req, res) => {
     // validasi required 
-    if(!req.body.email && !req.body.password){
+    if(!req.body.email || !req.body.password){
         res.status(400)
         throw new Error("Email dan Password tidak boleh kosong!")
     }
@@ -58,8 +58,8 @@ export const loginUser = asyncHandler (async (req, res) => {
         createSendToken(userData, 200, res)
     } else {
         res.status(400)
-        throw new Error("Email atau Password anda salah")
-    }
+        throw new Error("Akun tidak terdaftar")
+    }   
 
 })
 

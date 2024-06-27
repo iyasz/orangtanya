@@ -18,17 +18,18 @@
                         </div>
                     </div>
                     <div class="body mt-6">
+                        <AlertMessage v-if="authStores.isError" :message="authStores.errMsg"/>
                         <form @submit.prevent="HandleSubmitLogin">
                             <div class="mb-6">
                                 <label for="email" class="text-gray-500 text-sm ">Email</label>
-                                <input v-model="email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                                <input v-model="userInput.email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
                             </div>
                             <div class="mb-9">
                                 <label for="password" class="text-gray-500 text-sm ">Password</label>
-                                <input v-model="password" required autocomplete="off" type="password" placeholder="******" maxlength="30" id="password"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                                <input v-model="userInput.password" required autocomplete="off" type="password" placeholder="******" maxlength="30" id="password"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
                             </div>
                             <div>
-                                <button class="w-full bg-[#6680ff] text-white py-3 rounded-lg font-medium tracking-wide">Masuk</button>
+                                <button type="submit"class="w-full bg-[#6680ff] text-white py-3 rounded-lg font-medium tracking-wide">Masuk</button>
                             </div>
                         </form>
                         
@@ -60,22 +61,22 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
-    import axios from 'axios';
+    import { reactive } from 'vue';
+    import { useAuthStore } from '@/stores/authStores';
+    import AlertMessage from '../../atoms/AlertMessage.vue'
 
-    const email = ref('');
-    const password = ref('');
+    // Store 
+    const authStores = useAuthStore()
+    const { userLogin } = authStores;
 
-    const HandleSubmitLogin = async () => {
-        try {
-            const response = await axios.post('http://localhost:3000/api/v1/auth/login', {
-                email: email.value.toLowerCase(),
-                password: password.value.toLowerCase()
-            });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
-        }
+    // state 
+    const userInput = reactive({
+        email: "",
+        password: ""
+    })
+
+    const HandleSubmitLogin = () => {
+        userLogin(userInput)
     }
 </script>
 

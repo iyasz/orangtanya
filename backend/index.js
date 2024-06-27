@@ -13,7 +13,7 @@ const app = express();
 const port = 3000;
 
 // middleware platform 
-app.use(cors())
+// app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
@@ -22,7 +22,7 @@ if(process.env.APP_ENV === 'local'){
     app.use(morgan('dev'))
 }
 
-app.get("/", (req, res) => {
+app.get("/api/v1/test", (req, res) => {
     res.status(200).json({
         message : "kamu hebat"
     })
