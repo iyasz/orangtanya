@@ -85,6 +85,12 @@
                         
                     </div>
                     <div class="w-full md:w-4/12 ">
+                        <div v-if="!authStores.currentUser" class="bg-white rounded-[16px] mb-4">
+                            <div class="p-4">
+                                <h1>Login Dlu ~</h1>
+                                <TitleLine/>
+                            </div>
+                        </div>
                         <div class="bg-white rounded-[16px] mb-4">
                             <div class="p-4">
                                 <h1>Post Now ~</h1>
@@ -123,6 +129,11 @@
 <script setup>
     import { ref } from "vue";
     import TitleLine from '../../components/atoms/title-line.vue'
+    import { useAuthStore } from '@/stores/authStores'
+
+    // Stores
+    const authStores = useAuthStore();
+
 
     const menu = ref();
     const items = ref([
