@@ -2,9 +2,9 @@
     <Dialog modal>
         
         <template #container="{ closeCallback }">
-            <div class="bg-white h-[550px] w-full md:w-[450px] rounded-xl md:rounded-[35px]">
+            <div class="bg-white w-full md:w-[450px] rounded-xl md:rounded-[35px]">
                 <div class="py-6 px-5 md:py-8 md:px-8">
-                    <div class="header">
+                    <div class="header">    
                         <div class="flex justify-center">
                             <div class="ms-auto">
                                 <img src="@/assets/logo.png" alt="logo" width="200px">
@@ -17,9 +17,11 @@
                             <p class="text-xs text-gray-400">Jelajahi dunia tanya jawab, kunci akses pengetahuan, <br> dan berbagi tentang informasi</p>
                         </div>
                     </div>
+                    <AlertMessage v-if="authStores.isError" :message="authStores.errMsg"/>
                     <div class="body mt-6">
-                        <AlertMessage v-if="authStores.isError" :message="authStores.errMsg"/>
-                        <form @submit.prevent="HandleSubmitLogin">
+
+                        <!-- Login from  -->
+                        <form v-if="isLogin" @submit.prevent="HandleSubmitLogin">
                             <div class="mb-6">
                                 <label for="email" class="text-gray-500 text-sm ">Email</label>
                                 <input v-model="userInput.email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
@@ -31,11 +33,42 @@
                             <div>
                                 <button type="submit"class="w-full bg-[#6680ff] text-white py-3 rounded-lg font-medium tracking-wide">Masuk</button>
                             </div>
+                            <div class="text-center text-gray-500 text-sm mt-5">
+                                Belum punya akun? 
+                                <button @click="isLogin = false" class="text-[#6680ff] hover:underline">Daftar disini</button>
+                            </div>
+                        </form>
+
+                        <!-- Register Form  -->
+                        <form v-if="!isLogin" @submit.prevent="HandleSubmitLogin">
+                            <div class="mb-5">
+                                <label for="email" class="text-gray-500 text-sm ">Email</label>
+                                <input v-model="userInput.email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                            </div>
+                            <div class="mb-5">
+                                <label for="email" class="text-gray-500 text-sm ">Email</label>
+                                <input v-model="userInput.email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                            </div>
+                            <div class="mb-5">
+                                <label for="email" class="text-gray-500 text-sm ">Email</label>
+                                <input v-model="userInput.email" required autocomplete="off" type="email" placeholder="example@gmail.com" maxlength="50" id="email"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                            </div>
+                            <div class="mb-9">
+                                <label for="password" class="text-gray-500 text-sm ">Password</label>
+                                <input v-model="userInput.password" required autocomplete="off" type="password" placeholder="******" maxlength="30" id="password"class="block w-full mt-1 py-3 px-3 text-gray-500 border-gray-300 focus:border-[#6680ff] border-[1.4px] rounded-xl focus:outline-none">
+                            </div>
+                            <div>
+                                <button type="submit"class="w-full bg-[#6680ff] text-white py-3 rounded-lg font-medium tracking-wide">Daftar</button>
+                            </div>
+                            <div class="text-center text-gray-500 text-sm mt-5">
+                                Sudah punya akun? 
+                                <button @click="isLogin = true" class="text-[#6680ff] hover:underline">Masuk disini</button>
+                            </div>
                         </form>
                         
                     </div>
 
-                    <div class="footer">
+                    <div v-if="isLogin" class="footer">
                         <div class="mt-3 flex justify-between">
                             
                         </div>
@@ -58,12 +91,15 @@
             </div>
         </template>
     </Dialog>
+    <!-- <RegisterDialog :if="VisibleRegisterDialog"/> -->
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
+    import { reactive, ref } from 'vue';
     import { useAuthStore } from '@/stores/authStores';
     import AlertMessage from '../../atoms/AlertMessage.vue'
+
+    const isLogin = ref(true)
 
     // Store 
     const authStores = useAuthStore()
@@ -71,6 +107,7 @@
 
     // state 
     const userInput = reactive({
+        name: "",
         email: "",
         password: ""
     })

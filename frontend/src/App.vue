@@ -5,7 +5,7 @@
     <Navbar />
 
     
-    <RouterView />
+    <RouterView />  
     <h1>tes api{{ message }}</h1>
 
 

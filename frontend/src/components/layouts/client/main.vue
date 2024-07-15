@@ -127,7 +127,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 import NotificationNav from './notification.vue';
 import PostNAv from './PostNav.vue';
-import LoginDialog from './login.vue';
+import LoginDialog from './AuthForm.vue';
 
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/authStores'

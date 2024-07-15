@@ -44,14 +44,21 @@ export const useAuthStore = defineStore('user', () => {
         
     }
 
+    const handeRegister = () => {
+        
+    }
+
 
     const handleLogout = async () => {
         try {
 
+            
             localStorage.setItem("user", null)
             currentUser.value = null
             await axiosInstance.get('/auth/logout')
-            router.push({name: 'home'})
+
+            window.location.href="/"
+
 
         } catch (error) {
             console.log(error)

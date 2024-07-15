@@ -47,12 +47,12 @@
                   <Avatar image="https://www.hoyolab.com/_nuxt/img/default_avatar.25aeebf.png" shape="circle" />
               </button>
 
-              <button ref="profileMenu" v-else @click="VisibleProfileMenu = true" class="cursor-pointer">
+              <button ref="menuProfile" v-else @click="VisibleProfileMenu = true" class="cursor-pointer">
                   <Avatar image="https://www.hoyolab.com/_nuxt/img/default_avatar.25aeebf.png" shape="circle" />
               </button>
   
-              <LoginDialog v-model:visible="VisibleLoginDialog" />
-              <ProfileMenu v-if="VisibleProfileMenu" />
+              <AuthForm v-model:visible="VisibleLoginDialog" />
+              <ProfileMenu v-if="VisibleProfileMenu" ref="profileMenu"/>
           </div>
   
           <button class="lg:hidden block ms-auto" @click="VisibleSidebar = true">
@@ -128,12 +128,12 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
   
   import NotificationNav from './notification.vue';
   import PostNav from './PostNav.vue';
   import ProfileMenu from './profile.vue';
-  import LoginDialog from './login.vue';
+  import AuthForm from './AuthForm.vue';
   
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/authStores'
@@ -148,7 +148,9 @@
   const VisibleSidebar = ref(false);
   
   const VisibleProfileMenu = ref(false);
-  const profileMenu = ref(null); 
+  const menuProfile = ref(null); 
+  const profileMenu = ref(null);
+
   const showNotificationNav = ref(false);
   const notificationMenu = ref(null); 
   const showPostNav = ref(false);
@@ -165,9 +167,12 @@
         showPostNav.value = false;
     }
 
-    if (profileMenu.value && !profileMenu.value.contains(event.target)) {
-        VisibleProfileMenu.value = false
-    }
+    nextTick(() => {
+        if (profileMenu.value && !profileMenu.value.$el.contains(event.target) &&
+            menuProfile.value && !menuProfile.value.contains(event.target)) {
+            VisibleProfileMenu.value = false;
+        }
+    });
 
   };
   
