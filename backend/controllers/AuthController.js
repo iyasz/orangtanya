@@ -32,10 +32,9 @@ const createSendToken = (user, statusCode, res) => {
 export const registerUser = asyncHandler (async (req, res) => {
 
     const createUser = await User.create({
-        name: req.body.name.toLowerCase(),
-        username: req.body.username.toLowerCase(),
-        email: req.body.email.toLowerCase(),
-        password: req.body.password.toLowerCase(),
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
     }) 
 
     createSendToken(createUser, 201, res)

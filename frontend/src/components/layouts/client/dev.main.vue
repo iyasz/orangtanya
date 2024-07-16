@@ -9,7 +9,7 @@
               <RouterLink to="" class="text-slate-500 font-medium text-[15px] hover:text-[#6680ff] ms-8">Group</RouterLink>
           </div>
           <div class="ms-auto relative lg:block hidden">
-              <input type="text" name="search" autocomplete="off" id="search" class="block ease-in-out duration-200 focus:outline-0 w-[430px] rounded-full py-2 ps-7 pe-14 bg-[#f5f6fb] hover:bg-white focus:bg-white ring-1 ring-inset ring-[#f5f6fb] hover:ring-[#6680ff] focus:ring-[#6680ff] placeholder:text-gray-400 text-gray-400 text-sm" placeholder="Mau mencari apa?">
+              <input type="search" name="search" autocomplete="off" id="search" class="block ease-in-out duration-200 focus:outline-0 w-[430px] rounded-full py-2 ps-7 pe-14 bg-[#f5f6fb] hover:bg-white focus:bg-white ring-1 ring-inset ring-[#f5f6fb] hover:ring-[#6680ff] focus:ring-[#6680ff] placeholder:text-gray-400 text-gray-400 text-sm" placeholder="Mau mencari apa?">
               <div class="absolute inset-y-0 right-0 flex items-center px-4">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="" fill="#a3a3a3" viewBox="0 0 24 24" ><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
               </div>

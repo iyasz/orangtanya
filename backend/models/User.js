@@ -7,11 +7,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Nama tidak boleh kosong!"],
     },
-    username: {
-        type: String,
-        required: [true, "Username tidak boleh kosong!"],
-        unique: true
-    },
     email: {
         type: String,
         required: [true, "Email tidak boleh kosong!"],
