@@ -5,8 +5,8 @@
               <img src="@/assets/logo.png" width="180px" alt="">
           </div>
           <div class="ms-16 lg:block hidden">
-              <RouterLink to="" class="text-slate-500 font-medium text-[15px] hover:text-[#6680ff] ">Home</RouterLink>
-              <RouterLink to="" class="text-slate-500 font-medium text-[15px] hover:text-[#6680ff] ms-8">Group</RouterLink>
+              <RouterLink to="/" class="text-slate-500 font-medium text-[15px] hover:text-[#6680ff] ">Home</RouterLink>
+              <RouterLink to="/mid" class="text-slate-500 font-medium text-[15px] hover:text-[#6680ff] ms-8">Group</RouterLink>
           </div>
           <div class="ms-auto relative lg:block hidden">
               <input type="search" name="search" autocomplete="off" id="search" class="block ease-in-out duration-200 focus:outline-0 w-[430px] rounded-full py-2 ps-7 pe-14 bg-[#f5f6fb] hover:bg-white focus:bg-white ring-1 ring-inset ring-[#f5f6fb] hover:ring-[#6680ff] focus:ring-[#6680ff] placeholder:text-gray-400 text-gray-400 text-sm" placeholder="Mau mencari apa?">

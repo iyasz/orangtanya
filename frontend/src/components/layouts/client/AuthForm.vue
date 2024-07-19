@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="text-center text-gray-500 text-sm mt-5">
                                     Belum punya akun? 
-                                    <button @click="isLogin = false" class="text-[#6680ff] hover:underline">Daftar disini</button>
+                                    <button @click="isLogin = false, clearInput()" class="text-[#6680ff] hover:underline">Daftar disini</button>
                                 </div>
                             </div>
 
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="text-center text-gray-500 text-sm mt-5">
                                     Sudah punya akun? 
-                                    <button @click="isLogin = true" class="text-[#6680ff] hover:underline">Masuk disini</button>
+                                    <button @click="isLogin = true, clearInput()" class="text-[#6680ff] hover:underline">Masuk disini</button>
                                 </div>
                             </div>
                         </form>

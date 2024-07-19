@@ -6,7 +6,7 @@
 
     
     <RouterView />  
-    <h1>tes api{{ message }}</h1>
+    <!-- <h1>tes api{{ message }}</h1> -->
 
 
 </template>
