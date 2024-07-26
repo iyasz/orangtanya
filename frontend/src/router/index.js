@@ -41,15 +41,14 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach( async (to, from) => {
+router.beforeEach(async (to, from, next) => {
   const authStore = await useAuthStore()
 
-  if(to.meta.requiredAuth && !authStore.currentUser) {
-    return {
-      path: '/404'
-    }
+  if (to.meta.requiredAuth && !authStore.currentUser) {
+    next({ name: 'error.404', params: { pathMatch: to.path.split('/').slice(1) }, query: to.query, hash: to.hash });
+  } else {
+    next();
   }
-
 })
 
 export default router

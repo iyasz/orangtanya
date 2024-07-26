@@ -120,7 +120,7 @@
 
         if(isLogin.value == true){
             userLogin(userInput)
-            clearInput()
+            // clearInput()
         }else {
             handeRegister(userInput)
             clearInput()

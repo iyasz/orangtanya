@@ -30,19 +30,16 @@
                                         </div>  
                                     </div>
                                     <div class="body my-4">
-                                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, tenetur. Quisquam dicta ipsa praesentium sed neque exercitationem rem, veritatis facilis vero, enim possimus ab asperiores eligendi placeat molestiae pariatur sint?</p>
-                                        <div class="tag flex flex-wrap mt-3 gap-4">
-                                            <RouterLink to="" class="flex items-center text-xs text-[#6680ff]">
-                                                <i class="pi pi-hashtag me-1 text-xs"></i>
+                                        <p class="text-sm text-gray-700">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, tenetur. Quisquam dicta ipsa praesentium sed neque exercitationem rem, veritatis facilis vero, enim possimus ab asperiores eligendi placeat molestiae pariatur sint?</p>
+                                        <div class="tag flex flex-wrap mt-5 gap-3">
+                                            <RouterLink to="" class="flex items-center text-[11px] text-[#6680ff] bg-[#eff2ff] py-1 px-2 rounded-sm">
                                                 <p>Keqing</p>
                                             </RouterLink>
-                                            <RouterLink to="" class="flex items-center text-xs text-[#6680ff]">
-                                                <i class="pi pi-hashtag me-1 text-xs"></i>
-                                                <p>Elaina</p>
-                                            </RouterLink>
-                                            <RouterLink to="" class="flex items-center text-xs text-[#6680ff]">
-                                                <i class="pi pi-hashtag me-1 text-xs"></i>
+                                            <RouterLink to="" class="flex items-center text-[11px] text-[#6680ff] bg-[#eff2ff] py-1 px-2 rounded-sm">
                                                 <p>Arisu Sakayanagi</p>
+                                            </RouterLink>
+                                            <RouterLink to="" class="flex items-center text-[11px] text-[#6680ff] bg-[#eff2ff] py-1 px-2 rounded-sm">
+                                                <p>ELaina</p>
                                             </RouterLink>
                                         </div>
                                     </div>

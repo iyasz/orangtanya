@@ -22,22 +22,22 @@ import axiosInstance from './restapi/api.js'
 const message = ref(null);
 const showNavbar = ref(true);
 
-const getMessage = async () => {
-  try {
+// const getMessage = async () => {
+//   try {
 
-    const res = await axiosInstance.get('/test');
-    // const { data } = await axios.get("http://localhost:3000/");
+//     const res = await axiosInstance.get('/test');
+//        const { data } = await axios.get("http://localhost:3000/");
 
-    // message.value = data.message;
+//       message.value = data.message;
 
-    console.log(res)
-  } catch (error) {
-    console.error(error)
-  }
-}
+//     console.log(res)
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
 onMounted(() => {
-  getMessage();
+  // getMessage();
 })
 
 

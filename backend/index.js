@@ -2,7 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors"
+
+// Router 
 import authRouter from "./router/authRouter.js"
+import postRouter from "./router/postRouter.js"
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
@@ -22,14 +25,15 @@ if(process.env.APP_ENV === 'local'){
     app.use(morgan('dev'))
 }
 
-app.get("/api/v1/test", (req, res) => {
-    res.status(200).json({
-        message : "kamu hebat"
-    })
-})  
+// app.get("/api/v1/test", (req, res) => {
+//     res.status(200).json({
+//         message : "kamu hebat"
+//     })
+// })  
 
 // parent router 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/post', postRouter);
 
 app.use(notFound)
 app.use(errorHandler)
