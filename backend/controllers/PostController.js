@@ -1,20 +1,21 @@
 import Post from "../models/Post.js"
+import asyncHandler from '../middleware/asyncHandler.js'
 
 
-export const CreatePost = (req, res) => {
+export const CreatePost = asyncHandler( async (req, res) => {
 
     const { body } = req.body
 
-    const newPost = Post.create({
+    const newPost = await Post.create({
         body,
-        userId: req.user.id
+        userId: req.user._id
     })
 
     return res.status(201).json({
         message: "Post berhasil dibuat!",
         daat: newPost
     })
-}
+})
 
 export const PostAll = (req, res) => {
     res.send("Show All Post")

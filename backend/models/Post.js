@@ -5,21 +5,12 @@ const { Schema } = mongoose;
 const postSchema = new mongoose.Schema({
     body: {
         type: String,
-        required: [true, "Body tidak boleh kosong!"],
+        required: [true, "Isi content tidak boleh kosong!"],
     },
-    email: {
+    is_blocked : {
         type: String,
-        required: [true, "Email tidak boleh kosong!"],
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: [true, "Password tidak boleh kosong!"],
-        minLength: [6, "Password harus lebih dari 5 Huruf!"]
-    },
-    created_at: {
-        type: String,
-        required: [true, "created_at tidak boleh kosong!"],
+        enum: [1, 2],
+        default: 2
     },
     userId: {
         type: Schema.Types.ObjectId,

@@ -1,15 +1,15 @@
 import express from "express";
+import { authMiddleware } from '../middleware/authenticate.js'
+import adminPermission from '../middleware/onlyAdmin.js'
 import { CreatePost, PostAll, PostDetail, PostUpdate, PostDelete } from '../controllers/PostController.js'
-// import {getUser,loginUser,logoutUser,registerUser } from '../controllers/AuthController.js'
-// import { authMiddleware } from "../middleware/authenticate.js";
-// import onlyAdmin from "../middleware/onlyAdmin.js";
+
 
 const router = express.Router();
 
 // CRUD Route 
 
 // -- Create
-router.post('/', CreatePost);
+router.post('/', authMiddleware, CreatePost);
 
 // -- Read & Show
 router.get('/', PostAll);
