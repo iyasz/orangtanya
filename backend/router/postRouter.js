@@ -16,7 +16,7 @@ router.get('/', PostAll);
 router.get('/:id', PostDetail);
 
 // -- Update
-router.put('/:id', PostUpdate);
+router.put('/:id', authMiddleware, PostUpdate);
 
 // -- Delete
 router.delete('/:id', PostDelete);

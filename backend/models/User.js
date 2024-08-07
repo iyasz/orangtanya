@@ -27,7 +27,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: [1, 2],
         default: 2
-    }
+    },
+}, {
+    timestamps: true
 })
 
 userSchema.methods.comparePassword = async function(reqPassword){
