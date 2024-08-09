@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
 
 
-export const checkPermission = (reqUser, resourceUserId) => {
+export const checkPermission = (reqUser, resourceUserId, res) => {
 
-    if(reqUser.id === resourceUserId.toString()){
+    if(reqUser._id.toString() === resourceUserId.toString()){
         return
     }
 
-    throw new Error("Tidak dapat melakukan edit postingan")
+    res.status(403)
+    throw new Error("Tidak dapat melakukan hapus/edit postingan")
     
 }
 

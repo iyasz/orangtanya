@@ -19,7 +19,7 @@ router.get('/:id', PostDetail);
 router.put('/:id', authMiddleware, PostUpdate);
 
 // -- Delete
-router.delete('/:id', PostDelete);
+router.delete('/:id', authMiddleware, PostDelete);
 
 
 export default router;

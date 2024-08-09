@@ -65,13 +65,14 @@ export const PostUpdate = asyncHandler( async (req, res) => {
 
     const postData = await Post.findById(postId)
     
-    checkPermission(req.user, postData.userId)
-
     if (!postData) {
         return res.status(404).json({
             message: "Pertanyaan tidak ditemukan"
         });
     }
+    
+    checkPermission(req.user, postData.userId, res)
+
 
 
     postData.body = body
@@ -86,6 +87,31 @@ export const PostUpdate = asyncHandler( async (req, res) => {
 })
 
 
-export const PostDelete = (req, res) => {
-    res.send("Delete Post")
-}
+export const PostDelete = asyncHandler(async(req, res) => {
+    const postId = req.params.id
+
+    if (!mongoose.Types.ObjectId.isValid(postId)) {
+        return res.status(404).json({
+            message: "Pertanyaan tidak ditemukan"
+        });
+    }
+
+
+    const postData = await Post.findById(postId)
+
+
+    if (!postData) {
+        return res.status(404).json({
+            message: "Pertanyaan tidak ditemukan"
+        });
+    }
+
+    checkPermission(req.user, postData.userId, res)
+
+    await Post.findByIdAndDelete(postId)
+
+    return res.status(200).json({
+        message: "Berhasil menghapus post"
+    })
+
+})
